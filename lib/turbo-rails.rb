@@ -1,12 +1,12 @@
 require "turbo/engine"
-require "active_support/core_ext/module/attribute_accessors_per_thread"
+# require "active_support/core_ext/module/attribute_accessors_per_thread"
 
 module Turbo
   extend ActiveSupport::Autoload
 
   mattr_accessor :draw_routes, default: true
 
-  thread_mattr_accessor :current_request_id
+  mattr_accessor :current_request_id
 
   class << self
     attr_writer :signed_stream_verifier_key

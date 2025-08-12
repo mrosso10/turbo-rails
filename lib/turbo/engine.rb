@@ -47,16 +47,16 @@ module Turbo
     #     Rails.autoloaders.once.do_not_eager_load("#{root}/app/channels")
     #   end
     #
-    initializer "turbo.no_action_cable", before: :set_eager_load_paths do
-      unless defined?(ActionCable)
-        if Rails.autoloaders.zeitwerk_enabled?
-          Rails.autoloaders.once.do_not_eager_load("#{root}/app/channels")
-        else
-          # This else branch only runs in Rails 6.x + classic mode.
-          config.eager_load_paths.delete("#{root}/app/channels")
-        end
-      end
-    end
+    # initializer "turbo.no_action_cable", before: :set_eager_load_paths do
+    #   unless defined?(ActionCable)
+    #     if false # Rails.autoloaders.zeitwerk_enabled?
+    #       Rails.autoloaders.once.do_not_eager_load("#{root}/app/channels")
+    #     else
+    #       # This else branch only runs in Rails 6.x + classic mode.
+    #       config.eager_load_paths.delete("#{root}/app/channels")
+    #     end
+    #   end
+    # end
 
     # If you don't want to precompile Turbo's assets (eg. because you're using webpack),
     # you can do this in an intiailzer:
@@ -105,7 +105,8 @@ module Turbo
 
     initializer "turbo.renderer" do
       ActionController::Renderers.add :turbo_stream do |turbo_streams_html, options|
-        self.content_type = Mime[:turbo_stream] if media_type.nil?
+        # self.content_type = Mime[:turbo_stream] if media_type.nil?
+        self.content_type = Mime[:turbo_stream]
         turbo_streams_html
       end
     end

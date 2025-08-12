@@ -156,7 +156,7 @@ module Turbo::Broadcastable
   extend ActiveSupport::Concern
 
   included do
-    thread_mattr_accessor :suppressed_turbo_broadcasts, instance_accessor: false
+    mattr_accessor :suppressed_turbo_broadcasts, instance_accessor: false
     delegate :suppressed_turbo_broadcasts?, to: "self.class"
   end
 
