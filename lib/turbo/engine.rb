@@ -7,7 +7,6 @@ module Turbo
     config.turbo = ActiveSupport::OrderedOptions.new
     config.turbo.test_connect_after_actions = %i[visit]
     config.autoload_once_paths = %W(
-      #{root}/app/channels
       #{root}/app/controllers
       #{root}/app/controllers/concerns
       #{root}/app/helpers
