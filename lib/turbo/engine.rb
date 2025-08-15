@@ -90,13 +90,13 @@ module Turbo
       end
     end
 
-    initializer "turbo.broadcastable" do
-      ActiveSupport.on_load(:active_record) do
-        if defined?(ActiveJob)
-          include Turbo::Broadcastable
-        end
-      end
-    end
+    # initializer "turbo.broadcastable" do
+    #   ActiveSupport.on_load(:active_record) do
+    #     if defined?(ActiveJob)
+    #       include Turbo::Broadcastable
+    #     end
+    #   end
+    # end
 
     initializer "turbo.mimetype" do
       Mime::Type.register "text/vnd.turbo-stream.html", :turbo_stream
